@@ -8,10 +8,11 @@ public class Main {
         System.out.println(calc(str1));
     }
     public static String calc(String str1) {
+        String str2 = str1.replaceAll("\\s", "");
         int a=0;
         int b=0;
         boolean ar=true;
-        String[] x = str1.split("[+*/?\\-]");
+        String[] x = str2.split("[+*/?\\-]");
         if (x.length >2) try {
             throw new IOException();
         } catch (IOException e) {
