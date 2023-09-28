@@ -1,39 +1,30 @@
 import java.io.IOException;
 import java.util.Scanner;
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
         System.out.println("Введите пример");
         String str1 = in.nextLine();
         System.out.println(calc(str1));
     }
-    public static String calc(String str1) {
+    public static String calc(String str1) throws IOException {
         String str2 = str1.replaceAll("\\s", "");
-        int a=0;
-        int b=0;
-        boolean ar=true;
+        int a = 0;
+        int b = 0;
+        boolean ar = true;
         String[] x = str2.split("[+*/?\\-]");
-        if (x.length >2) try {
+        if (x.length > 2) try {
             throw new IOException();
-        } catch (IOException e) {
-            return ("т.к. формат математической операции не удовлетворяет заданию " +
-                    "- два операнда и один оператор (+, -, /, *)");
-        }
+        } finally {}
         if (x.length !=2) try {
             throw new IOException();
-        } catch (IOException e) {
-            return ("т.к. строка не является математической операцией");
-        }
+        } finally {}
         if (rimArabOff(x[0]) && !rimArabOff(x[1])) try {
             throw new IOException();
-        } catch (IOException e) {
-            return ("т.к. используются одновременно разные системы счисления");
-        }
+        } finally {}
         if (!rimArabOff(x[0]) && rimArabOff(x[1])) try {
             throw new IOException();
-        } catch (IOException e) {
-            return ("т.к. используются одновременно разные системы счисления");
-        }
+        } finally {}
         if (rimArabOff(x[0]) && rimArabOff(x[1])) {     // на выхоте арабские цифры
             a = Integer.parseInt(x[0]);
             b = Integer.parseInt(x[1]);
@@ -43,30 +34,17 @@ public class Main {
             ar = false;}
         if (a < 0) try {
             throw new IOException();
-        }
-        catch (
-                IOException e) {
-            return (" т.к. операнд не удовлетворяет заданию");
-        }
+        } finally {}
         if (a > 10) try {
             throw new IOException();
-        } catch (
-                IOException e) {
-            return ("т.к. операнд не удовлетворяет заданию");
-        }
+        } finally {}
         if (b < 0) try {
             throw new IOException();
-        } catch (
-                IOException e) {
-            return ("т.к. операнд не удовлетворяет заданию");
-        }
+        } finally {}
         if (b > 10) try {
             throw new IOException();
-        } catch (
-                IOException e) {
-            return ("т.к. операнд не удовлетворяет заданию");}
+        } finally {}
         int rez = 0;
-
         if (str1.contains("+")) {
             rez = a + b;
         }
@@ -81,10 +59,7 @@ public class Main {
         }
         if ((rez <= 0) && (!ar)) try {
             throw new IOException();
-        } catch (
-                IOException e) {
-            return ("т.к. в римской системе нет отрицательных чисел");
-        }
+        } finally {}
         if (!ar) return "Результат: " + convert2(rez);  // вывод римских чисел
         return "Результат: " + rez;                     // вывод арабских чисел
     }
