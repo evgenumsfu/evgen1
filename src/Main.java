@@ -74,8 +74,7 @@ public class Main {
     public static boolean rimArabOff(String x) {
         for (String s : rim) {
             if (x.equals(s)) {
-                return false;
-            }
+                return false;}
         }
         return true;
     }
